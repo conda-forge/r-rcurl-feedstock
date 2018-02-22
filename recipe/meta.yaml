@@ -15,7 +15,7 @@ source:
   sha256: e72243251bbbec341bc5864305bb8cc23d311d19c5d0d9310afec7eb35aa2bfb
 
 build:
-  number: 0
+  number: 1
   # skip windows due to compilation failures
   skip: true  # [win]
   rpaths:
@@ -30,11 +30,13 @@ requirements:
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
     - curl
+    - libcurl
 
   run:
     - r-base
     - r-bitops
     - curl
+    - libcurl
 
 test:
   commands:
