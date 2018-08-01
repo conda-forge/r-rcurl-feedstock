@@ -15,7 +15,8 @@ source:
   sha256: 792a091cf5b80c460d98ed80fe1cad5d9406d0afc32e466e970ee4d2f68c97bf
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   # skip windows due to compilation failures
   skip: true  # [win]
   rpaths:
@@ -24,11 +25,12 @@ build:
 
 requirements:
   build:
+    - posix                # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
     - r-base
     - r-bitops
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
     - curl
 
   run:
