@@ -1,4 +1,4 @@
-{% set version = "1.95-4.11" %}
+{% set version = '1.95-4.11' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -10,24 +10,34 @@ package:
 source:
   fn: RCurl_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/RCurl_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/RCurl/RCurl_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/RCurl_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/RCurl/RCurl_{{ version }}.tar.gz
   sha256: 792a091cf5b80c460d98ed80fe1cad5d9406d0afc32e466e970ee4d2f68c97bf
 
 build:
   merge_build_host: True  # [win]
-  number: 1
-  # skip windows due to compilation failures
   skip: true  # [win]
+  number: 2
+
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
+
   host:
     - r-base
     - r-bitops
@@ -35,18 +45,19 @@ requirements:
 
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-bitops
     - curl
 
 test:
   commands:
-    - $R -e "library('RCurl')"  # [not win]
+    - $R -e "library('RCurl')"           # [not win]
     - "\"%R%\" -e \"library('RCurl')\""  # [win]
 
 about:
   home: http://www.omegahat.net/RCurl
   license: BSD
-  summary: A wrapper for libcurl. Provides functions to allow
+  summary: A wrapper for 'libcurl' Provides functions to allow
     one to compose general HTTP requests and provides convenient functions to fetch
     URIs, get & post forms, etc. and process the results returned by the Web server.
     This provides a great deal of control over the HTTP/FTP/... connection and the form
@@ -60,3 +71,7 @@ extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
