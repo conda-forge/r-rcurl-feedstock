@@ -15,7 +15,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 0
+  number: 3
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -29,11 +29,12 @@ requirements:
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
     - {{posix}}autoconf
-    - {{posix}}automake-wrapper  # [win]
     - {{posix}}pkg-config
     - {{posix}}make
-    - {{posix}}sed  # [win]
-    - {{posix}}coreutils  # [win]
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-bitops
@@ -52,7 +53,7 @@ test:
 about:
   home: http://www.omegahat.net/RCurl
   license: BSD
-  summary: A wrapper for 'libcurl' <http://curl.haxx.se/libcurl/> Provides functions to allow
+  summary: A wrapper for 'libcurl' Provides functions to allow
     one to compose general HTTP requests and provides convenient functions to fetch
     URIs, get & post forms, etc. and process the results returned by the Web server.
     This provides a great deal of control over the HTTP/FTP/... connection and the form
@@ -69,3 +70,4 @@ extra:
     - daler
     - jdblischak
     - cbrueffer
+    - dbast
