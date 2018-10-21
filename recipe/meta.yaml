@@ -1,5 +1,4 @@
 {% set version = '1.95-4.11' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -16,9 +15,8 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  skip: true  # [win]
-  number: 2
-
+  number: 3
+  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -31,23 +29,23 @@ requirements:
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
     - {{posix}}autoconf
-    - {{posix}}automake          # [not win]
-    - {{posix}}automake-wrapper  # [win]
     - {{posix}}pkg-config
     - {{posix}}make
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
-
   host:
     - r-base
     - r-bitops
-    - curl
-
+    - {{native}}curl             # [win]
+    - {{native}}libcurl          # [not win]
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
     - r-bitops
-    - curl
+    - {{native}}curl             # [win]
+    - {{native}}libcurl          # [not win]
 
 test:
   commands:
@@ -75,3 +73,4 @@ extra:
     - jdblischak
     - cbrueffer
     - dbast
+    - mingwandroid

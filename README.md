@@ -7,7 +7,7 @@ Package license: BSD
 
 Feedstock license: BSD 3-Clause
 
-Summary: A wrapper for 'libcurl' <http://curl.haxx.se/libcurl/> Provides functions to allow one to compose general HTTP requests and provides convenient functions to fetch URIs, get & post forms, etc. and process the results returned by the Web server. This provides a great deal of control over the HTTP/FTP/... connection and the form of the request while providing a higher-level interface than is available just using R socket connections.  Additionally, the underlying implementation is robust and extensive, supporting FTP/FTPS/TFTP (uploads and downloads), SSL/HTTPS, telnet, dict, ldap, and also supports cookies, redirects, authentication, etc.
+Summary: A wrapper for 'libcurl' Provides functions to allow one to compose general HTTP requests and provides convenient functions to fetch URIs, get & post forms, etc. and process the results returned by the Web server. This provides a great deal of control over the HTTP/FTP/... connection and the form of the request while providing a higher-level interface than is available just using R socket connections.  Additionally, the underlying implementation is robust and extensive, supporting FTP/FTPS/TFTP (uploads and downloads), SSL/HTTPS, telnet, dict, ldap, and also supports cookies, redirects, authentication, etc.
 
 
 
@@ -16,7 +16,7 @@ Current build status
 
 [![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-rcurl-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-rcurl-feedstock)
 [![OSX](https://img.shields.io/travis/conda-forge/r-rcurl-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-rcurl-feedstock)
-![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-rcurl-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-rcurl-feedstock/branch/master)
 
 Current release info
 ====================
