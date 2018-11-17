@@ -4,11 +4,7 @@ channel_targets:
 - conda-forge main
 cran_mirror:
 - https://cran.r-project.org
-curl:
-- '7.59'
 pin_run_as_build:
-  curl:
-    max_pin: x
   r-base:
     max_pin: x.x.x
 r_base:
