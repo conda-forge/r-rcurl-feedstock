@@ -34,7 +34,6 @@ requirements:
     - {{posix}}automake-wrapper  # [win]
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
-    - llvm-openmp                # [osx] 
   host:
     - r-base
     - r-bitops
@@ -46,7 +45,8 @@ requirements:
     - r-bitops
     - {{native}}curl             # [win]
     - {{native}}libcurl          # [not win]
-    - llvm-openmp                # [osx] 
+    # Workaround for conda solver preferring gsl from defaults
+    - openblas                   # [osx and c_compiler=="toolchain_c"]
 
 test:
   commands:
