@@ -1,4 +1,4 @@
-{% set version = '1.95-4.11' %}
+{% set version = '1.95-4.12' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,15 +7,14 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: RCurl_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/RCurl_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RCurl/RCurl_{{ version }}.tar.gz
-  sha256: 792a091cf5b80c460d98ed80fe1cad5d9406d0afc32e466e970ee4d2f68c97bf
+  sha256: 393779efafdf40823dac942a1e028905d65c34f3d41cfd21bcd225e411385ff4
 
 build:
   merge_build_host: True  # [win]
-  number: 1003
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -28,10 +27,10 @@ requirements:
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
     - {{posix}}autoconf
-    - {{posix}}pkg-config
-    - {{posix}}make
     - {{posix}}automake          # [not win]
     - {{posix}}automake-wrapper  # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
     - {{posix}}coreutils         # [win]
     - {{posix}}zip               # [win]
   host:
@@ -45,8 +44,6 @@ requirements:
     - r-bitops
     - {{native}}curl             # [win]
     - {{native}}libcurl          # [not win]
-    # Workaround for conda solver preferring gsl from defaults
-    - openblas                   # [osx and c_compiler=="toolchain_c"]
 
 test:
   commands:
@@ -68,10 +65,26 @@ about:
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+    - conda-forge/r
     - mingwandroid
+
+# Package: RCurl
+# Version: 1.95-4.12
+# Title: General Network (HTTP/FTP/...) Client Interface for R
+# Author: Duncan Temple Lang and the CRAN team
+# SystemRequirements: GNU make, libcurl
+# Maintainer: Duncan Temple Lang <duncan@r-project.org>
+# Description: A wrapper for 'libcurl' <http://curl.haxx.se/libcurl/> Provides functions to allow one to compose general HTTP requests and provides convenient functions to fetch URIs, get & post forms, etc. and process the results returned by the Web server. This provides a great deal of control over the HTTP/FTP/... connection and the form of the request while providing a higher-level interface than is available just using R socket connections.  Additionally, the underlying implementation is robust and extensive, supporting FTP/FTPS/TFTP (uploads and downloads), SSL/HTTPS, telnet, dict, ldap, and also supports cookies, redirects, authentication, etc.
+# License: BSD
+# Depends: R (>= 3.0.0), methods, bitops
+# Suggests: Rcompression, XML
+# URL: http://www.omegahat.net/RCurl
+# Additional_repositories: http://www.omegahat.net/R/
+# Limitations: One doesn't yet have full control over the contents of a POST form such as specifying files, content type. Error handling uses a single global variable at present.
+# Note: This will be used generally to communicate with HTTP servers and specifically in the SOAP package, HTML forms and for accessing data on Web sites that require more state information than simply URL access (e.g. cookies).
+# Check: To run R CMD check, one really needs network access. It is an HTTP client! This can be problematic as a Web site may be down when you run but the real tests are important.
+# Collate: aclassesEnums.R bitClasses.R xbits.R base64.R binary.S classes.S curl.S curlAuthConstants.R curlEnums.R curlError.R curlInfo.S dynamic.R form.S getFormParams.R getURLContent.R header.R http.R httpError.R httpErrors.R iconv.R info.S mime.R multi.S options.S scp.R support.S upload.R urlExists.R zclone.R zzz.R
+# NeedsCompilation: yes
+# Packaged: 2019-03-03 18:59:27 UTC; ripley
+# Repository: CRAN
+# Date/Publication: 2019-03-04 09:45:33 UTC
