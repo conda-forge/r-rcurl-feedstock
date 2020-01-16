@@ -1,4 +1,4 @@
-{% set version = '1.95-4.12' %}
+{% set version = "1.95-4.13" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/RCurl_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RCurl/RCurl_{{ version }}.tar.gz
-  sha256: 393779efafdf40823dac942a1e028905d65c34f3d41cfd21bcd225e411385ff4
+  sha256: 06012334b47b140d3c47afd17939dd400840efa35b835b18affdbf5566439005
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -53,6 +53,7 @@ test:
 about:
   home: http://www.omegahat.net/RCurl
   license: BSD
+  license_file: LICENSE
   summary: A wrapper for 'libcurl' Provides functions to allow
     one to compose general HTTP requests and provides convenient functions to fetch
     URIs, get & post forms, etc. and process the results returned by the Web server.
