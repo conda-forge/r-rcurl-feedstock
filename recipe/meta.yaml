@@ -1,4 +1,4 @@
-{% set version = "1.98-1.2" %}
+{% set version = "1.98-1.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/RCurl_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RCurl/RCurl_{{ version }}.tar.gz
-  sha256: 5d74a0cdc3c5684b0348b959f67039e3c2a5da2bbb6176f6800a94124895a7a8
+  sha256: 5c9a5ed12bd56136d608efb1962a87246b02b74b3ca0f0fb90ac9b43ff2f2755
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -54,10 +54,8 @@ about:
   home: http://www.omegahat.net/RCurl
   license: BSD
   license_file: LICENSE
-  summary: A wrapper for 'libcurl' Provides functions to allow one to compose general HTTP requests and provides convenient functions to fetch URIs, get & post forms,
-    etc. and process the results returned by the Web server. This provides a great deal of control over the HTTP/FTP/... connection and the form of the request while
-    providing a higher-level interface than is available just using R socket connections.  Additionally, the underlying implementation is robust and extensive, supporting
-    FTP/FTPS/TFTP (uploads and downloads), SSL/HTTPS, telnet, dict, ldap, and also supports cookies, redirects, authentication, etc.
+  summary: A wrapper for 'libcurl' Provides functions to allow one to compose general HTTP requests and provides convenient functions to fetch URIs, get & post forms, etc. and process the results returned by the Web server. This provides a great deal of control over the HTTP/FTP/... connection and the form of the request
+    while providing a higher-level interface than is available just using R socket connections.  Additionally, the underlying implementation is robust and extensive, supporting FTP/FTPS/TFTP (uploads and downloads), SSL/HTTPS, telnet, dict, ldap, and also supports cookies, redirects, authentication, etc.
   license_family: BSD
 
 extra:
