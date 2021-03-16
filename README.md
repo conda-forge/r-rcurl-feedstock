@@ -3,7 +3,7 @@ About r-rcurl
 
 Home: http://www.omegahat.net/RCurl
 
-Package license: BSD
+Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rcurl-feedstock/blob/master/LICENSE.txt)
 
