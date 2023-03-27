@@ -1,4 +1,4 @@
-{% set version = "1.98-1.10" %}
+{% set version = "1.98-1.12" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/RCurl_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RCurl/RCurl_{{ version }}.tar.gz
-  sha256: 5a622bcf8b6fb77f4b01e9473d3685f64f51401240630bb25b0266a61306f1d4
+  sha256: 1a83fef04e9573b402171a6e4a4b27857a3d045eec8970f8f7233850bba626b2
 
 build:
   merge_build_host: true  # [win]
