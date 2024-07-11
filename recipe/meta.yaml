@@ -1,4 +1,4 @@
-{% set version = "1.98-1.14" %}
+{% set version = "1.98-1.16" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/RCurl_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RCurl/RCurl_{{ version }}.tar.gz
-  sha256: eead278694471dfa9bd2f256d229eebed782e71dc1c734fb457ec35377f303cf
+  sha256: 1a8dc40e10593617348071c6265cc7fac22e26271564206b308a3badfc6c0da7
 
 build:
   merge_build_host: true  # [win]
@@ -24,7 +24,9 @@ requirements:
     - cross-r-base {{ r_base }}  # [build_platform != target_platform]
     - r-bitops                   # [build_platform != target_platform]
     - {{ compiler('c') }}        # [not win]
+    - {{ stdlib("c") }}          # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
