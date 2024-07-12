@@ -1,6 +1,5 @@
 {% set version = "1.98-1.16" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rcurl
@@ -13,8 +12,7 @@ source:
   sha256: 1a8dc40e10593617348071c6265cc7fac22e26271564206b308a3badfc6c0da7
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -40,13 +38,12 @@ requirements:
   host:
     - r-base
     - r-bitops
-    - {{ native }}curl             # [win]
+    - curl             # [win]
     - libcurl                      # [not win]
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-bitops
-    - {{ native }}curl             # [win]
+    - curl             # [win]
     - libcurl                      # [not win]
 
 test:
