@@ -4,7 +4,7 @@ channel_targets:
 - conda-forge main
 cran_mirror:
 - https://cran.r-project.org
-curl:
+libcurl:
 - '8'
 m2w64_c_compiler:
 - gcc
