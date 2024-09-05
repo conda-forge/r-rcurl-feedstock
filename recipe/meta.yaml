@@ -10,6 +10,8 @@ source:
     - {{ cran_mirror }}/src/contrib/RCurl_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/RCurl/RCurl_{{ version }}.tar.gz
   sha256: 1a8dc40e10593617348071c6265cc7fac22e26271564206b308a3badfc6c0da7
+  patches:
+    - patches/0001-minimal-ucrt-libs.patch
 
 build:
   number: 1
