@@ -27,4 +27,4 @@ index e817f7e..0932456 100644
 -endif
 -
 +PKG_CPPFLAGS = $(DEFINES) -I$(LIBRARY_INC)
-+PKG_LIBS = -L$(LIBRARY_LIB) -lcurl
++PKG_LIBS = -L$(LIBRARY_LIB) -lcurl -lws2_32
