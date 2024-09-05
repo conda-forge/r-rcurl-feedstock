@@ -1,0 +1,30 @@
+From 3cc62778e095a8812140a5f6e73bff875a959b65 Mon Sep 17 00:00:00 2001
+From: Mervin Fansler <mervin.fansler@bric.ku.dk>
+Date: Thu, 5 Sep 2024 11:27:54 +0200
+Subject: [PATCH] minimal ucrt libs
+
+---
+ src/Makevars.ucrt | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
+
+diff --git a/src/Makevars.ucrt b/src/Makevars.ucrt
+index e817f7e..0932456 100644
+--- a/src/Makevars.ucrt
++++ b/src/Makevars.ucrt
+@@ -2,14 +2,5 @@ DEFINES= -DHAVE_LIBIDN_FIELD=1 -DHAVE_CURLOPT_URL=1 -DHAVE_CURLINFO_EFFECTIVE_UR
+ 
+ DEFINES += -DCURL_STATICLIB -DCURL_DISABLE_DEPRECATION
+ 
+-PKG_CPPFLAGS = $(DEFINES)
+-
+-ifeq (,$(shell pkg-config --version 2>/dev/null))
+-  LIBPSL = $(or $(and $(wildcard $(R_TOOLS_SOFT)/lib/libpsl.a),-lpsl),)
+-  LIBBROTLI = $(or $(and $(wildcard $(R_TOOLS_SOFT)/lib/libbrotlidec.a),-lbrotlidec -lbrotlicommon),)
+-  PKG_LIBS = -lwinhttp -lcurl $(LIBPSL) $(LIBBROTLI) -lbcrypt -lrtmp -lssl -lssh2 -lgcrypt -lcrypto -lgdi32 -lz -lgdi32 -lcrypt32 -lidn2 -lunistring -liconv -lgpg-error -lws2_32 -lwldap32 -lwinmm -lzstd
+-else
+-  PKG_LIBS = $(shell pkg-config --libs libcurl)
+-  PKG_CPPFLAGS += $(shell pkg-config --cflags libcurl)
+-endif
+-
++PKG_CPPFLAGS = $(DEFINES) -I$(LIBRARY_INC)
++PKG_LIBS = -L$(LIBRARY_LIB) -lcurl -lws2_32
