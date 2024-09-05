@@ -41,6 +41,7 @@ requirements:
     - r-base
     - r-bitops
     - libcurl
+    - libxml2                      # [not win]
   run:
     - r-base
     - r-bitops
