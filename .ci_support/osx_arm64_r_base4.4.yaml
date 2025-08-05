@@ -18,6 +18,8 @@ cran_mirror:
 - https://cran.r-project.org
 libcurl:
 - '8'
+liblzma_devel:
+- '5'
 libxml2:
 - '2.13'
 macos_machine:
@@ -30,3 +32,5 @@ r_base:
 - '4.4'
 target_platform:
 - osx-arm64
+zlib:
+- '1'
